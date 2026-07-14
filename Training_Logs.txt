@@ -1,0 +1,124 @@
+Device: cuda
+Model parameters: 30,560,769
+
+Starting training — epochs 0 to 4
+
+Device: cuda
+Model parameters: 30,560,769
+
+Starting training — epochs 0 to 19
+
+Epoch 0000 | Train Total=0.7680  Mel=0.3385  PNet=0.4231  Gate=0.0065 | Val Total=0.4347  Align=0.584 | Time=952.6s
+Epoch 0001 | Train Total=0.3980  Mel=0.2048  PNet=0.1893  Gate=0.0039 | Val Total=0.3628  Align=0.558 | Time=949.0s
+Epoch 0002 | Train Total=0.3503  Mel=0.1822  PNet=0.1643  Gate=0.0037 | Val Total=0.3301  Align=0.544 | Time=946.9s
+Epoch 0003 | Train Total=0.3237  Mel=0.1698  PNet=0.1503  Gate=0.0037 | Val Total=0.3086  Align=0.522 | Time=945.5s
+Epoch 0004 | Train Total=0.3065  Mel=0.1617  PNet=0.1412  Gate=0.0036 | Val Total=0.2959  Align=0.520 | Time=947.1s
+Epoch 0005 | Train Total=0.2931  Mel=0.1555  PNet=0.1340  Gate=0.0036 | Val Total=0.2816  Align=0.515 | Time=947.1s
+Epoch 0006 | Train Total=0.2830  Mel=0.1507  PNet=0.1287  Gate=0.0036 | Val Total=0.2727  Align=0.509 | Time=947.5s
+Epoch 0007 | Train Total=0.2735  Mel=0.1462  PNet=0.1238  Gate=0.0036 | Val Total=0.2647  Align=0.496 | Time=945.0s
+Epoch 0008 | Train Total=0.2664  Mel=0.1426  PNet=0.1202  Gate=0.0036 | Val Total=0.2579  Align=0.494 | Time=948.8s
+Epoch 0009 | Train Total=0.2607  Mel=0.1396  PNet=0.1176  Gate=0.0036 | Val Total=0.2523  Align=0.495 | Time=945.3s
+Checkpoint saved: checkpoints/checkpoint_0009.pt
+Device: cuda
+Model parameters: 30,560,769
+Resuming from checkpoint: checkpoints/checkpoint_0009.pt
+Resuming from epoch 10
+
+Starting training — epochs 10 to 19
+
+Device: cuda
+Model parameters: 30,560,769
+Resuming from checkpoint: checkpoints/checkpoint_0009.pt
+Resuming from epoch 10
+
+Starting training — epochs 10 to 19
+
+Device: cuda
+Model parameters: 30,516,225
+Resuming from checkpoint: checkpoints/checkpoint_0009_halfSet.pt
+Device: cuda
+Model parameters: 30,516,225
+
+Starting training — epochs 0 to 19
+
+Device: cuda
+Model parameters: 30,516,225
+
+leaving the training on 3.30pm 13-07-26
+
+Starting training — epochs 0 to 29
+
+Device: cuda
+Model parameters: 30,516,225
+
+cuda ran out of memory :(
+
+Starting training — epochs 0 to 29
+
+again ran out of memory :(
+
+    Device: cuda
+Model parameters: 30,516,225
+
+Starting training — epochs 0 to 29
+
+Device: cuda
+Model parameters: 30,516,225
+
+Starting training — epochs 0 to 29
+
+Device: cuda
+Model parameters: 30,516,225
+
+Starting training — epochs 0 to 29
+
+Device: cuda
+Model parameters: 30,516,225
+
+Starting training — epochs 0 to 29
+
+Epoch 0000 | Train Total=0.5495  Mel=0.2631  PNet=0.2813  Gate=0.0051 | Val Total=0.3618  Align=0.611 | Time=2317.4s
+Epoch 0001 | Train Total=0.3329  Mel=0.1752  PNet=0.1539  Gate=0.0038 | Val Total=0.3056  Align=0.609 | Time=2304.9s
+Epoch 0002 | Train Total=0.2978  Mel=0.1588  PNet=0.1352  Gate=0.0037 | Val Total=0.2799  Align=0.691 | Time=2305.6s
+Checkpoint saved: checkpoints/checkpoint_0002.pt
+Epoch 0003 | Train Total=0.2755  Mel=0.1481  PNet=0.1237  Gate=0.0037 | Val Total=0.2642  Align=0.661 | Time=2304.6s
+Epoch 0004 | Train Total=0.2592  Mel=0.1403  PNet=0.1152  Gate=0.0037 | Val Total=0.2537  Align=0.650 | Time=2307.4s
+Epoch 0005 | Train Total=0.2477  Mel=0.1347  PNet=0.1093  Gate=0.0036 | Val Total=0.2383  Align=0.654 | Time=2305.3s
+Checkpoint saved: checkpoints/checkpoint_0005.pt
+Epoch 0006 | Train Total=0.2376  Mel=0.1297  PNet=0.1042  Gate=0.0036 | Val Total=0.2275  Align=0.675 | Time=2306.7s
+Epoch 0007 | Train Total=0.2300  Mel=0.1260  PNet=0.1004  Gate=0.0036 | Val Total=0.2232  Align=0.698 | Time=2306.1s
+Epoch 0008 | Train Total=0.2234  Mel=0.1227  PNet=0.0971  Gate=0.0036 | Val Total=0.2156  Align=0.729 | Time=2307.7s
+Checkpoint saved: checkpoints/checkpoint_0008.pt
+Epoch 0009 | Train Total=0.2185  Mel=0.1202  PNet=0.0946  Gate=0.0036 | Val Total=0.2120  Align=0.774 | Time=2305.6s
+Epoch 0010 | Train Total=0.2145  Mel=0.1181  PNet=0.0927  Gate=0.0036 | Val Total=0.2099  Align=0.811 | Time=2309.6s
+Epoch 0011 | Train Total=0.2104  Mel=0.1160  PNet=0.0907  Gate=0.0036 | Val Total=0.2052  Align=0.878 | Time=2307.9s
+Checkpoint saved: checkpoints/checkpoint_0011.pt
+Epoch 0012 | Train Total=0.2071  Mel=0.1142  PNet=0.0892  Gate=0.0036 | Val Total=0.2037  Align=0.928 | Time=2309.3s
+Epoch 0013 | Train Total=0.2039  Mel=0.1125  PNet=0.0878  Gate=0.0036 | Val Total=0.2017  Align=0.925 | Time=2309.5s
+Epoch 0014 | Train Total=0.2008  Mel=0.1108  PNet=0.0865  Gate=0.0036 | Val Total=0.1999  Align=0.909 | Time=2305.8s
+Checkpoint saved: checkpoints/checkpoint_0014.pt
+Epoch 0015 | Train Total=0.1988  Mel=0.1096  PNet=0.0856  Gate=0.0036 | Val Total=0.1947  Align=0.946 | Time=2312.1s
+Epoch 0016 | Train Total=0.1948  Mel=0.1074  PNet=0.0839  Gate=0.0036 | Val Total=0.1930  Align=0.933 | Time=2309.2s
+Epoch 0017 | Train Total=0.1922  Mel=0.1059  PNet=0.0828  Gate=0.0036 | Val Total=0.1920  Align=0.922 | Time=2309.8s
+Checkpoint saved: checkpoints/checkpoint_0017.pt
+Epoch 0018 | Train Total=0.1887  Mel=0.1038  PNet=0.0813  Gate=0.0036 | Val Total=0.1858  Align=0.934 | Time=2307.5s
+Epoch 0019 | Train Total=0.1863  Mel=0.1024  PNet=0.0803  Gate=0.0036 | Val Total=0.1843  Align=0.932 | Time=2307.2s
+Epoch 0020 | Train Total=0.1864  Mel=0.1025  PNet=0.0803  Gate=0.0036 | Val Total=0.1820  Align=0.941 | Time=2303.5s
+Checkpoint saved: checkpoints/checkpoint_0020.pt
+Epoch 0021 | Train Total=0.1826  Mel=0.1003  PNet=0.0788  Gate=0.0036 | Val Total=0.1808  Align=0.936 | Time=2311.4s
+Epoch 0022 | Train Total=0.1827  Mel=0.1003  PNet=0.0788  Gate=0.0036 | Val Total=0.1790  Align=0.932 | Time=2309.2s
+Epoch 0023 | Train Total=0.1783  Mel=0.0978  PNet=0.0770  Gate=0.0036 | Val Total=0.1779  Align=0.934 | Time=2308.8s
+Checkpoint saved: checkpoints/checkpoint_0023.pt
+Epoch 0024 | Train Total=0.1773  Mel=0.0972  PNet=0.0766  Gate=0.0035 | Val Total=0.1797  Align=0.930 | Time=2307.8s
+Epoch 0025 | Train Total=0.1773  Mel=0.0972  PNet=0.0765  Gate=0.0035 | Val Total=0.1756  Align=0.935 | Time=2305.7s
+Epoch 0026 | Train Total=0.1746  Mel=0.0957  PNet=0.0754  Gate=0.0035 | Val Total=0.1750  Align=0.933 | Time=2307.5s
+Checkpoint saved: checkpoints/checkpoint_0026.pt
+Epoch 0027 | Train Total=0.1738  Mel=0.0952  PNet=0.0751  Gate=0.0035 | Val Total=0.1741  Align=0.934 | Time=2311.5s
+Epoch 0028 | Train Total=0.1782  Mel=0.0977  PNet=0.0770  Gate=0.0036 | Val Total=0.1749  Align=0.926 | Time=2314.9s
+Epoch 0029 | Train Total=0.1729  Mel=0.0947  PNet=0.0746  Gate=0.0035 | Val Total=0.1742  Align=0.933 | Time=2309.6s
+Checkpoint saved: checkpoints/checkpoint_0029.pt
+
+Training complete.
+Metrics : metrics/metrics.json
+Graphs  : metrics/training_metrics.png
+Checkpoints: checkpoints/
