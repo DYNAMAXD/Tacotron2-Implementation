@@ -93,17 +93,14 @@ Generated Speech (.wav)
 
 ## Dataset
 
-The model was trained using the
+The model was trained using the **IISc SYSPIN Hindi Speech Corpus** [click here][dataset-link].
 
-**IISc SYSPIN Hindi Speech Corpus**
-
-Dataset Characteristics
-
-- Language : Hindi
-- Speaker : Male
-- Sample Rate : 22050 Hz
-- Single Speaker Dataset
-- Professionally Recorded Speech
+| Property | Value |
+|----------|-------|
+| Language | Hindi |
+| Speaker | Male |
+| Sample Rate | 22050 Hz |
+| Type | Single Speaker, Professionally Recorded |
 
 ---
 
@@ -141,17 +138,16 @@ Tacotron2-Implementation
 
 ---
 
-## Installation
+## Getting Started
 
-### Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/DYNAMAXD/Tacotron2-Implementation.git
-
 cd Tacotron2-Implementation
 ```
 
-### Create a Virtual Environment
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv venv
@@ -163,7 +159,7 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -171,27 +167,57 @@ pip install -r requirements.txt
 
 ---
 
-## Running the Model
+## How to Use
 
-### Run Gradio Interface
+### Step 1 - Configure paths and settings
+
+Open `config.py` and update the following before doing anything else:
+
+- `WAV_DIR` - path to the folder containing your `.wav` files
+- `JSON_PATH` - path to your transcripts file (an Excel sheet with WAV filenames and their corresponding Hindi transcripts)
+- `NUM_SAMPLES` - number of samples you want to train on
+- `NUM_EPOCHS` - number of training epochs
+
+The transcript file is expected to be an Excel sheet where each row has the WAV filename and its corresponding transcript text.
+
+### Step 2 - Prepare vocabulary and data splits
+
+Run `prep_data.py` to build the vocabulary file and create the train/val CSV splits:
+
+```bash
+python prep_data.py
+```
+
+This script does two things:
+
+- Builds `vocab.pt`, a precomputed vocabulary file using the Akshar tokenizer (the vocab building section is commented out by default - uncomment it on first run)
+- Creates `train.csv` and `test.csv` which are used during training
+
+After the first run you can comment the vocab building back out so it does not recompute on every run.
+
+If you want to change the architecture - number of layers, attention dimensions, postnet depth, etc. - edit `model.py` before starting training.
+
+### Step 3 - Train
+
+```bash
+python train.py
+```
+
+Training metrics and alignment plots are saved automatically as training progresses.
+
+### Step 4 - Inference
+
+```bash
+python inference.py --text "नमस्ते, आपका स्वागत है।"
+```
+
+Or run the Gradio interface:
 
 ```bash
 python app.py
 ```
 
-Open
-
-```
-http://127.0.0.1:7860
-```
-
----
-
-### Run Inference
-
-```bash
-python inference.py --text "नमस्ते, आपका स्वागत है।"
-```
+Then open `http://127.0.0.1:7860` in your browser.
 
 ---
 
@@ -199,13 +225,9 @@ python inference.py --text "नमस्ते, आपका स्वागत 
 
 ```
 नमस्ते, आपका स्वागत है।
-
 भारतीय रेलवे में आपका स्वागत है।
-
 कृपया अपने सामान का ध्यान रखें।
-
 आज का मौसम बहुत सुहावना है।
-
 अगला स्टेशन नई दिल्ली है।
 ```
 
@@ -230,7 +252,7 @@ python inference.py --text "नमस्ते, आपका स्वागत 
 
 ## Deployment
 
-The project is deployed using
+The project is deployed using:
 
 - Hugging Face Spaces
 - Gradio
@@ -266,8 +288,7 @@ This repository extends and adapts those concepts for Hindi Text-to-Speech, incl
 
 GitHub: https://github.com/DYNAMAXD
 
-LinkedIn:
-https://www.linkedin.com/in/dynamaxd/
+LinkedIn: https://www.linkedin.com/in/dynamaxd/
 
 ---
 
@@ -291,3 +312,4 @@ If you use this work in your research, please consider citing this repository an
 [issues-url]: https://github.com/DYNAMAXD/Tacotron2-Implementation/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/dynamaxd/
+[dataset-link]:https://syspin.iisc.ac.in/datasets
