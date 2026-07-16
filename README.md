@@ -13,7 +13,7 @@
   <p align="center">
     An end-to-end Hindi Text-to-Speech (TTS) system built using the Tacotron2 architecture. The model converts Hindi text into mel spectrograms using a custom Hindi Akshar tokenizer and reconstructs speech using the Griffin-Lim algorithm.
     <br />
-    <a href="https://huggingface.co/spaces/DYNAMAXD/Hindi-Tacotron2"><strong>Try the Live Demo »</strong></a>
+    <a href="[https://huggingface.co/spaces/DYNAMAXD/Hindi-Tacotron2](https://huggingface.co/spaces/DYNAMAXD/Tacotron2_Hindi)"><strong>Try the Live Demo »</strong></a>
     <br />
     <br />
     <a href="https://huggingface.co/DYNAMAXD">Hugging Face</a>
