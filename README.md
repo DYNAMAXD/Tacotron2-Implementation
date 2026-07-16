@@ -275,7 +275,7 @@ https://www.linkedin.com/in/dynamaxd/
 
 This project is intended for research and educational purposes.
 
-If you use this work in your research, please consider citing this repository and the original Tacotron2 paper. The Tacotron family of models provides an end-to-end sequence-to-sequence architecture for neural text-to-speech synthesis. :contentReference[oaicite:0]{index=0}
+If you use this work in your research, please consider citing this repository and the original Tacotron2 paper. The Tacotron family of models provides an end-to-end sequence-to-sequence architecture for neural text-to-speech synthesis.
 
 ---
 
