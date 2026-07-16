@@ -1,188 +1,293 @@
-Tacotron2 for Hindi (IISc SYSPIN Dataset)
-=========================================
+# Hindi Tacotron2: End-to-End Hindi Text-to-Speech Synthesis
 
-Files
------
-config.py          -- all hyperparameters and paths
-tokenizer_hindi.py -- akshar-based Hindi syllable tokenizer
-dataset.py         -- audio loading, mel conversion, dataloader
-model.py           -- Tacotron2 architecture
-prep_data.py       -- convert IISc JSON to train/val CSVs + build vocab
-train.py           -- training loop with metrics, checkpoints, graphs
-inference.py       -- inference + Griffin-Lim + generation stats
-requirements.txt   -- pip dependencies
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
+<br />
+<div align="center">
+  <h3 align="center">Hindi Tacotron2 Text-to-Speech</h3>
 
-BEFORE YOU DO ANYTHING -- READ THIS
--------------------------------------
+  <p align="center">
+    An end-to-end Hindi Text-to-Speech (TTS) system built using the Tacotron2 architecture. The model converts Hindi text into mel spectrograms using a custom Hindi Akshar tokenizer and reconstructs speech using the Griffin-Lim algorithm.
+    <br />
+    <a href="https://huggingface.co/spaces/DYNAMAXD/Hindi-Tacotron2"><strong>Try the Live Demo »</strong></a>
+    <br />
+    <br />
+    <a href="https://huggingface.co/DYNAMAXD">Hugging Face</a>
+    ·
+    <a href="https://github.com/DYNAMAXD/Tacotron2-Implementation/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/DYNAMAXD/Tacotron2-Implementation/issues">Request Feature</a>
+  </p>
+</div>
 
-1. INSTALL DEPENDENCIES
+---
 
-   pip install torch torchaudio librosa numpy pandas scikit-learn scipy matplotlib tqdm akshar
+## Overview
 
-   If akshar fails to install:
-       pip install akshar
-   If it still fails, the tokenizer falls back to character-level automatically.
-   Character-level still works for Hindi -- akshar just gives slightly better tokens.
+This repository contains a complete implementation of a Hindi Text-to-Speech pipeline based on the Tacotron2 architecture.
 
-2. FIX PATHS IN config.py
+The project includes:
 
-   Open config.py and set:
-       WAV_DIR   = path to the folder containing your .wav files
-       JSON_PATH = path to your IISc SYSPIN transcript JSON file
+- Custom Hindi Akshar Tokenizer
+- Complete Tacotron2 implementation in PyTorch
+- Griffin-Lim waveform reconstruction
+- Interactive Gradio Web Interface
+- Hugging Face Spaces deployment
+- Training and inference scripts
+- Attention visualization
+- Mel spectrogram visualization
 
-   Example (Windows):
-       WAV_DIR   = r"C:\data\IISc_SYSPINProject_Hindi_Male_Spk001_HC\wav"
-       JSON_PATH = r"C:\data\IISc_SYSPINProject_Hindi_Male_Spk001_HC\transcripts.json"
+The model has been trained on the IISc SYSPIN Hindi Speech Corpus and is capable of synthesizing intelligible Hindi speech directly from text.
 
-   Example (Linux/Mac):
-       WAV_DIR   = "/data/IISc_SYSPIN/wav"
-       JSON_PATH = "/data/IISc_SYSPIN/transcripts.json"
+---
 
-3. RUN PREP_DATA FIRST
+## Features
 
-       python prep_data.py
+- End-to-End Hindi Text-to-Speech
+- Tacotron2 Encoder-Decoder Architecture
+- Custom Hindi Akshar Tokenizer
+- Griffin-Lim Audio Reconstruction
+- Mel Spectrogram Generation
+- Attention Alignment Visualization
+- Gradio Web Interface
+- Hugging Face ZeroGPU Deployment
+- PyTorch Implementation
 
-   This will:
-   - Scan all wav files and match with transcripts
-   - Create data/train_metadata.csv and data/val_metadata.csv
-   - Build the Hindi vocabulary and save to vocab.pt
-   - Print the VOCAB_SIZE number you need
+---
 
-4. UPDATE VOCAB_SIZE IN config.py
+## Model Pipeline
 
-   After prep_data.py prints "VOCAB_SIZE = XXXX", go to config.py and set:
-       VOCAB_SIZE = XXXX   (the number it printed)
+```
+Hindi Text
+      │
+      ▼
+Hindi Akshar Tokenizer
+      │
+      ▼
+Tacotron2 Encoder
+      │
+      ▼
+Location Sensitive Attention
+      │
+      ▼
+Tacotron2 Decoder
+      │
+      ▼
+Postnet
+      │
+      ▼
+Mel Spectrogram
+      │
+      ▼
+Griffin-Lim Reconstruction
+      │
+      ▼
+Generated Speech (.wav)
+```
 
-5. TUNE BATCH SIZE FOR YOUR 3050
+---
 
-   The RTX 3050 has 4-8GB VRAM. Start with:
-       BATCH_SIZE = 16
-   If you get CUDA out-of-memory, reduce to:
-       BATCH_SIZE = 8   or   BATCH_SIZE = 4
+## Dataset
 
-6. TUNE NUM_EPOCHS
+The model was trained using the
 
-   50 hours of data is a good amount. Recommended:
-   - Epoch 50:  model starts learning basic prosody
-   - Epoch 200: intelligible speech usually starts
-   - Epoch 500: good quality (if alignment is diagonal)
+**IISc SYSPIN Hindi Speech Corpus**
 
-   Set in config.py:
-       NUM_EPOCHS = 200  (start here, extend later)
+Dataset Characteristics
 
+- Language : Hindi
+- Speaker : Male
+- Sample Rate : 22050 Hz
+- Single Speaker Dataset
+- Professionally Recorded Speech
 
-TRAINING
---------
+---
 
-    python train.py
+## Built With
 
-Output:
-- checkpoints/checkpoint_NNNN.pt  (saved every SAVE_EVERY_N epochs)
-- metrics/metrics.json             (all loss values)
-- metrics/training_metrics.png     (loss graphs, updated every epoch)
-- audio_out/alignment_epoch_NNNN.png  (true mel vs predicted mel vs attention)
+* ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+* ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white)
+* ![Gradio](https://img.shields.io/badge/Gradio-FF7C00?style=for-the-badge)
+* ![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-yellow)
+* ![Librosa](https://img.shields.io/badge/Librosa-Audio-blue?style=for-the-badge)
 
+---
 
-HOW TO KNOW IF TRAINING IS WORKING
-------------------------------------
+## Repository Structure
 
-Watch the alignment plot (audio_out/alignment_epoch_XXXX.png).
-The bottom panel shows the attention matrix.
+```text
+Tacotron2-Implementation
+│
+├── app.py
+├── inference.py
+├── train.py
+├── prep_data.py
+├── dataset.py
+├── tokenizer_hindi.py
+├── model.py
+├── config.py
+├── requirements.txt
+├── vocab.pt
+├── checkpoint_0035.pt
+│
+├── audio_out/
+├── inference_out/
+└── README.md
+```
 
-- Early epochs (1-50):  attention looks like noise or a blurry blob -- normal
-- Middle epochs (50-150): a diagonal stripe should start forming
-- Good training (150+):  a clear diagonal line from top-left to bottom-right
+---
 
-If after 200 epochs the attention is STILL completely random/noisy:
-- Reduce learning rate to 5e-4
-- Try batch size 8
-- Check that your wav files load at the right sample rate (22050)
+## Installation
 
-The total loss should decrease from ~1.5-2.0 down toward 0.2-0.5 over training.
+### Clone the Repository
 
+```bash
+git clone https://github.com/DYNAMAXD/Tacotron2-Implementation.git
 
-INFERENCE
----------
+cd Tacotron2-Implementation
+```
 
-After training, synthesize speech:
+### Create a Virtual Environment
 
-    # Synthesize one sentence (uses latest checkpoint automatically)
-    python inference.py --text "नमस्ते दुनिया"
+```bash
+python -m venv venv
 
-    # Interactive mode
-    python inference.py --interactive
+# Windows
+venv\Scripts\activate
 
-    # Specify checkpoint and output folder
-    python inference.py --text "आपका स्वागत है" \
-                        --checkpoint checkpoints/checkpoint_0199.pt \
-                        --out_dir my_outputs \
-                        --gl_iters 80
+# Linux / macOS
+source venv/bin/activate
+```
 
-Output per synthesis:
-- inference_out/XXXX.wav              (the audio)
-- inference_out/XXXX_analysis.png     (mel + attention plot)
-- Console prints generation statistics
+### Install Dependencies
 
-Griffin-Lim quality tips:
-  --gl_iters 60   fast, acceptable quality
-  --gl_iters 100  slower, better quality
-  --gl_iters 200  best quality from Griffin-Lim
+```bash
+pip install -r requirements.txt
+```
 
+---
 
-COMMON PROBLEMS
----------------
+## Running the Model
 
-"Vocab not found"
-  -> Run prep_data.py first
+### Run Gradio Interface
 
-CUDA out of memory
-  -> Reduce BATCH_SIZE in config.py (try 8, then 4)
+```bash
+python app.py
+```
 
-Audio sounds like noise after 100+ epochs
-  -> This is usually an alignment problem. Check the attention plots.
-     Try lowering LEARNING_RATE to 5e-4 and retraining from scratch.
+Open
 
-Audio is cut off too early
-  -> Lower GATE_THRESHOLD from 0.5 to 0.3 in config.py
+```
+http://127.0.0.1:7860
+```
 
-Audio never stops (max steps hit)
-  -> Raise GATE_THRESHOLD from 0.5 to 0.6
+---
 
-UNK tokens everywhere in tokenizer
-  -> Your text contains characters not seen in training.
-     Make sure test sentences use vocabulary from training data.
+### Run Inference
 
-Windows multiprocessing errors in DataLoader
-  -> NUM_WORKERS is already set to 0 in config.py for Windows safety.
+```bash
+python inference.py --text "नमस्ते, आपका स्वागत है।"
+```
 
+---
 
-DIRECTORY STRUCTURE AFTER SETUP
----------------------------------
+## Example Inputs
 
-tacotron2_hindi/
-    config.py
-    tokenizer_hindi.py
-    dataset.py
-    model.py
-    prep_data.py
-    train.py
-    inference.py
-    requirements.txt
-    vocab.pt                    (created by prep_data.py)
-    data/
-        train_metadata.csv      (created by prep_data.py)
-        val_metadata.csv        (created by prep_data.py)
-    checkpoints/
-        checkpoint_0009.pt
-        checkpoint_0019.pt
-        ...
-    metrics/
-        metrics.json
-        training_metrics.png
-    audio_out/
-        alignment_epoch_0000.png
-        ...
-    inference_out/
-        नमस्ते_दुनिया.wav
-        नमस्ते_दुनिया_analysis.png
+```
+नमस्ते, आपका स्वागत है।
+
+भारतीय रेलवे में आपका स्वागत है।
+
+कृपया अपने सामान का ध्यान रखें।
+
+आज का मौसम बहुत सुहावना है।
+
+अगला स्टेशन नई दिल्ली है।
+```
+
+---
+
+## Training Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Architecture | Tacotron2 |
+| Framework | PyTorch |
+| Sample Rate | 22050 Hz |
+| Mel Channels | 80 |
+| FFT Size | 1024 |
+| Hop Length | 256 |
+| Vocabulary Size | 4685 |
+| Griffin-Lim Iterations | 60 |
+| Batch Size | 24 |
+| Epochs | 36 |
+
+---
+
+## Deployment
+
+The project is deployed using
+
+- Hugging Face Spaces
+- Gradio
+- ZeroGPU Runtime
+
+---
+
+## Future Work
+
+- HiFi-GAN Integration
+- Multi-Speaker Hindi TTS
+- Emotion-aware Speech Synthesis
+- ONNX Export
+- Faster Real-time Inference
+- Streaming TTS
+- Speaker Adaptation
+
+---
+
+## Acknowledgements
+
+A special thanks to **Priyam Mazumdar** for creating one of the most comprehensive Tacotron2 tutorial series and for openly sharing the implementation that served as an excellent educational reference during the development of this project. The insights from the tutorial greatly helped in understanding the Tacotron2 architecture and training pipeline.
+
+GitHub: https://github.com/priyammaz
+
+This repository extends and adapts those concepts for Hindi Text-to-Speech, including a custom Hindi tokenizer, data preprocessing pipeline, training workflow, inference utilities, and Hugging Face deployment.
+
+---
+
+## Author
+
+**Divyansh Yadav**
+
+GitHub: https://github.com/DYNAMAXD
+
+LinkedIn:
+https://www.linkedin.com/in/dynamaxd/
+
+---
+
+## License
+
+This project is intended for research and educational purposes.
+
+If you use this work in your research, please consider citing this repository and the original Tacotron2 paper. The Tacotron family of models provides an end-to-end sequence-to-sequence architecture for neural text-to-speech synthesis. :contentReference[oaicite:0]{index=0}
+
+---
+
+<!-- MARKDOWN LINKS -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/DYNAMAXD/Tacotron2-Implementation.svg?style=for-the-badge
+[contributors-url]: https://github.com/DYNAMAXD/Tacotron2-Implementation/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/DYNAMAXD/Tacotron2-Implementation.svg?style=for-the-badge
+[forks-url]: https://github.com/DYNAMAXD/Tacotron2-Implementation/network/members
+[stars-shield]: https://img.shields.io/github/stars/DYNAMAXD/Tacotron2-Implementation.svg?style=for-the-badge
+[stars-url]: https://github.com/DYNAMAXD/Tacotron2-Implementation/stargazers
+[issues-shield]: https://img.shields.io/github/issues/DYNAMAXD/Tacotron2-Implementation.svg?style=for-the-badge
+[issues-url]: https://github.com/DYNAMAXD/Tacotron2-Implementation/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/dynamaxd/
